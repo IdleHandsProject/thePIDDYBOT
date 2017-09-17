@@ -1,0 +1,73 @@
+Partlist
+
+Exported from PIDDYBOT_V11.brd at 28/08/2017 2:50:43 PM
+
+EAGLE Version 7.2.0 Copyright (c) 1988-2014 CadSoft
+
+Assembly variant: 
+
+Part     Value          Package                   Library                    Position (mm)         Orientation
+
+BATT_JP                 SJ_2S                     SparkFun-Passives          (3.7 63)              R270
+BT_PWR   M02PTH         1X02                      SparkFun-Connectors        (45.6 23.2)           R270
+C1       1uF            0603-CAP                  SparkFun                   (14.85 20.1)          R270
+C2       1uF            0603-CAP                  SparkFun                   (18.85 1.75)          R180
+C3       4.7uF          0603-CAP                  SparkFun                   (11.25 73.125)        R90
+C4       1uF            0603-CAP                  SparkFun                   (27.85 1.6)           R0
+C5       10uf , 20V     EIA3528                   SparkFun                   (18.8 15)             R90
+C6       4.7uF          0603-CAP                  SparkFun                   (10.125 65.375)       R0
+C7       10uF           EIA3216                   SparkFun                   (10.1 46.9)           R90
+C8       0.1uF          0603-CAP                  SparkFun                   (20.4 19.8)           R180
+C9       0.1uF          0603-CAP                  SparkFun                   (21.75 55.025)        R180
+C10      1uF            0603-CAP                  SparkFun                   (11.7 53)             R90
+C11      0.1uF          0603-CAP                  SparkFun                   (11.2 43.4)           R0
+C12      0.1uF          0603-CAP                  SparkFun                   (28.2 36.3)           R270
+C13      2.2nF          0603-CAP                  SparkFun                   (23.875 45.5)         R0
+C14      0.1uF          0603-CAP                  SparkFun                   (19.325 50.25)        R270
+C15      10uF           EIA3216                   SparkFun                   (7 46.8)              R270
+C16      10nF           0603-CAP                  SparkFun                   (25.75 55.05)         R0
+C22      1uF            0603-CAP                  SparkFun                   (19.4 42.2)           R180
+C23      1uF            0603-CAP                  SparkFun                   (22.6 40.9)           R180
+CN2      M02JST-PTH-2   JST-2-PTH                 SparkFun-Connectors        (6.5 57.5)            R90
+D1       Green          LED-0603                  SparkFun                   (4.4 25)              R0
+D2       Green          LED-0603                  SparkFun                   (37.7 57.37)          R270
+D3       Red            LED-0603                  SparkFun                   (41.4 57.36)          R270
+D5       Yellow         LED-0603                  SparkFun                   (9 24.4)              R0
+D6                      SOD-323                   SparkFun                   (4.2 47.1)            R270
+D11      RED            LED-0603                  SparkFun                   (8.5 72.25)           R180
+F1       500mA          PTC-1206                  SparkFun                   (3.1 51.8)            R270
+JP2      M01SMDNS       1X01NS                    SparkFun                   (46.025 62.05)        R0
+JP3                     1X06-1MM                  SparkFun-Connectors        (11.5 12)             MR270
+JP4                     1X06-1MM                  SparkFun-Connectors        (37 12)               MR270
+JP5                     2X3-NS                    SparkFun-Connectors        (4.9 16.8)            R90
+LED2     Red            LED-0603                  SparkFun                   (14.4 47.3)           R180
+MTA      M02PTH3        1X02_LONGPADS             SparkFun-Connectors        (17.5 5)              R0
+MTB      M02PTH3        1X02_LONGPADS             SparkFun-Connectors        (29 5)                R180
+R1       1M             0603-RES                  SparkFun                   (10.7 20.1)           R270
+R2       330            0603-RES                  SparkFun                   (8.875 74.75)         R0
+R3       470k           0603-RES                  SparkFun                   (12.75 20.1)          R90
+R4       2K             0603-RES                  SparkFun                   (6.125 73.125)        R90
+R5       1K             0603-RES                  SparkFun                   (13.5 50)             R180
+R6       10K            0603-RES                  SparkFun                   (14.6 53.2)           R180
+R7       330            0603-RES                  SparkFun                   (5.3 27.6)            R180
+R8       330            0603-RES                  SparkFun                   (6.6 25.1)            R270
+R9       22             0603-RES                  SparkFun                   (22.6 67)             R90
+R10      10k            0603-RES                  SparkFun                   (24.85 43.425)        R180
+R11      10k            0603-RES                  SparkFun                   (28.25 46.625)        R0
+R12      330            0603-RES                  SparkFun                   (41.25 59.135)        R0
+R13      22             0603-RES                  SparkFun                   (25 67)               R90
+R21      330            0603-RES                  SparkFun                   (37.71 59.125)        R0
+R22      10K            0603-RES                  SparkFun                   (46 65.375)           R270
+RESET    RESET          TACTILE_SWITCH_SMD        SparkFun                   (13.625 57.625)       R0
+S4                      SWITCH-SPDT               SparkFun-Electromechanical (3 37.8)              R0
+U$1      ATMEGA32U4TQFP SPARKFUN-DIGITALIC_TQFP44 SparkFun-DigitalIC         (18.5 32.5)           R270
+U$2      DRV8835        WSON-12                   scout                      (24.3 17.6)           R0
+U$16                    ALPS_POT                  SparkFun-Electromechanical (39 70)               MR270
+U$17                    ALPS_POT                  SparkFun-Electromechanical (24 65)               MR270
+U$18                    ALPS_POT                  SparkFun-Electromechanical (8.5 70)              MR270
+U1       MPU-6050-1     QFN-24-4MM2               Testing                    (24 49.875)           R180
+U2       MCP73831       SOT23-5                   SparkFun                   (8.5 68.375)          R0
+U5       BLUETOOTH-RN41 RN41                      ScratchPad                 (40 39)               R270
+U6       MIC5219        SOT23-5                   SparkFun                   (8.6 51.7)            R270
+X2                      USB_AB_MICRO_1:1_V2       Testing                    (24 74.625)           R270
+Y1       8Mhz           CSTCR6M                   murata-filter              (9.1 29.1)            R180

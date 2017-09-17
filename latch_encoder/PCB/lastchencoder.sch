@@ -1,0 +1,299 @@
+EESchema Schematic File Version 2
+LIBS:power
+LIBS:device
+LIBS:transistors
+LIBS:conn
+LIBS:linear
+LIBS:regul
+LIBS:74xx
+LIBS:cmos4000
+LIBS:adc-dac
+LIBS:memory
+LIBS:xilinx
+LIBS:microcontrollers
+LIBS:dsp
+LIBS:microchip
+LIBS:analog_switches
+LIBS:motorola
+LIBS:texas
+LIBS:intel
+LIBS:audio
+LIBS:interface
+LIBS:digital-audio
+LIBS:philips
+LIBS:display
+LIBS:cypress
+LIBS:siliconi
+LIBS:opto
+LIBS:atmel
+LIBS:contrib
+LIBS:valves
+LIBS:ws2812b
+LIBS:mcp73831t
+LIBS:motor_pololu_microgeared
+LIBS:lastchencoder-cache
+EELAYER 25 0
+EELAYER END
+$Descr A3 16535 11693
+encoding utf-8
+Sheet 1 1
+Title ""
+Date "2016-10-08"
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L TLE4946-2K U7
+U 1 1 5923EC62
+P 8300 4850
+F 0 "U7" H 8300 4500 60  0000 C CNN
+F 1 "TLE4946-2K" H 8300 5250 60  0000 C CNN
+F 2 "idlehands_footprints:SOT23" H 8300 4850 60  0001 C CNN
+F 3 "" H 8300 4850 60  0001 C CNN
+F 4 "TLE49462KHTSA1CT-ND" H 8300 4850 60  0001 C CNN "Digikey Part No."
+	1    8300 4850
+	1    0    0    -1  
+$EndComp
+$Comp
+L +3.3V #PWR01
+U 1 1 59241ABD
+P 8900 4400
+F 0 "#PWR01" H 8900 4250 50  0001 C CNN
+F 1 "+3.3V" H 8900 4540 50  0000 C CNN
+F 2 "" H 8900 4400 60  0000 C CNN
+F 3 "" H 8900 4400 60  0000 C CNN
+	1    8900 4400
+	1    0    0    -1  
+$EndComp
+$Comp
+L R R21
+U 1 1 59245E75
+P 9100 4650
+F 0 "R21" V 9180 4650 50  0000 C CNN
+F 1 "10k" V 9100 4650 50  0000 C CNN
+F 2 "project_footprints:R_0402_Hand" V 9030 4650 30  0001 C CNN
+F 3 "" H 9100 4650 30  0000 C CNN
+F 4 "311-10KJRCT-ND" V 9100 4650 60  0001 C CNN "Digikey Part No."
+	1    9100 4650
+	-1   0    0    1   
+$EndComp
+Text GLabel 9200 4850 2    60   Input ~ 0
+HALL2
+$Comp
+L TLE4946-2K U6
+U 1 1 59246DFC
+P 6750 4850
+F 0 "U6" H 6750 4500 60  0000 C CNN
+F 1 "TLE4946-2K" H 6750 5250 60  0000 C CNN
+F 2 "idlehands_footprints:SOT23" H 6750 4850 60  0001 C CNN
+F 3 "" H 6750 4850 60  0001 C CNN
+F 4 "TLE49462KHTSA1CT-ND" H 6750 4850 60  0001 C CNN "Digikey Part No."
+	1    6750 4850
+	1    0    0    -1  
+$EndComp
+$Comp
+L +3.3V #PWR02
+U 1 1 59246E04
+P 7350 4400
+F 0 "#PWR02" H 7350 4250 50  0001 C CNN
+F 1 "+3.3V" H 7350 4540 50  0000 C CNN
+F 2 "" H 7350 4400 60  0000 C CNN
+F 3 "" H 7350 4400 60  0000 C CNN
+	1    7350 4400
+	1    0    0    -1  
+$EndComp
+$Comp
+L R R20
+U 1 1 59246E1B
+P 7550 4650
+F 0 "R20" V 7630 4650 50  0000 C CNN
+F 1 "10k" V 7550 4650 50  0000 C CNN
+F 2 "project_footprints:R_0402_Hand" V 7480 4650 30  0001 C CNN
+F 3 "" H 7550 4650 30  0000 C CNN
+F 4 "311-10KJRCT-ND" V 7550 4650 60  0001 C CNN "Digikey Part No."
+	1    7550 4650
+	-1   0    0    1   
+$EndComp
+Text GLabel 7650 4850 2    60   Input ~ 0
+HALL1
+$Comp
+L GND #PWR03
+U 1 1 59576997
+P 7950 5500
+F 0 "#PWR03" H 7950 5250 50  0001 C CNN
+F 1 "GND" H 7950 5350 50  0000 C CNN
+F 2 "" H 7950 5500 60  0000 C CNN
+F 3 "" H 7950 5500 60  0000 C CNN
+	1    7950 5500
+	1    0    0    -1  
+$EndComp
+$Comp
+L C_Small C2
+U 1 1 59A20F6D
+P 6000 2850
+F 0 "C2" H 6010 2920 50  0000 L CNN
+F 1 "0.1uF" H 6010 2770 50  0001 L CNN
+F 2 "project_footprints:C_0402_Hand" H 6000 2850 60  0001 C CNN
+F 3 "" H 6000 2850 60  0000 C CNN
+F 4 "490-6328-1-ND" H 6000 2850 60  0001 C CNN "Digikey Part No."
+	1    6000 2850
+	1    0    0    -1  
+$EndComp
+$Comp
+L C_Small C1
+U 1 1 59A23535
+P 4350 2850
+F 0 "C1" H 4360 2920 50  0000 L CNN
+F 1 "3.3nF" H 4360 2770 50  0001 L CNN
+F 2 "project_footprints:C_0402_Hand" H 4350 2850 60  0001 C CNN
+F 3 "" H 4350 2850 60  0000 C CNN
+F 4 "1276-1549-1-ND" H 4350 2850 60  0001 C CNN "Digikey Part No."
+	1    4350 2850
+	1    0    0    -1  
+$EndComp
+$Comp
+L CONN_01X06 P1
+U 1 1 59A261C9
+P 5450 3000
+F 0 "P1" H 5450 3350 50  0000 C CNN
+F 1 "CONN_01X06" V 5550 3000 50  0000 C CNN
+F 2 "Connectors_JST_SH:Connectors_JST_SM06B-SRSS-TB" H 5450 3000 50  0001 C CNN
+F 3 "" H 5450 3000 50  0000 C CNN
+	1    5450 3000
+	1    0    0    -1  
+$EndComp
+$Comp
+L +3.3V #PWR04
+U 1 1 59A26943
+P 5050 2550
+F 0 "#PWR04" H 5050 2400 50  0001 C CNN
+F 1 "+3.3V" H 5050 2690 50  0000 C CNN
+F 2 "" H 5050 2550 60  0000 C CNN
+F 3 "" H 5050 2550 60  0000 C CNN
+	1    5050 2550
+	1    0    0    -1  
+$EndComp
+Text GLabel 5000 3050 0    60   Input ~ 0
+HALL1
+Text GLabel 5000 3150 0    60   Input ~ 0
+HALL2
+$Comp
+L GND #PWR05
+U 1 1 59A26F56
+P 5050 3400
+F 0 "#PWR05" H 5050 3150 50  0001 C CNN
+F 1 "GND" H 5050 3250 50  0000 C CNN
+F 2 "" H 5050 3400 60  0000 C CNN
+F 3 "" H 5050 3400 60  0000 C CNN
+	1    5050 3400
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR06
+U 1 1 59A278D4
+P 6000 3150
+F 0 "#PWR06" H 6000 2900 50  0001 C CNN
+F 1 "GND" H 6000 3000 50  0000 C CNN
+F 2 "" H 6000 3150 60  0000 C CNN
+F 3 "" H 6000 3150 60  0000 C CNN
+	1    6000 3150
+	1    0    0    -1  
+$EndComp
+$Comp
+L +3.3V #PWR07
+U 1 1 59A278F4
+P 6000 2550
+F 0 "#PWR07" H 6000 2400 50  0001 C CNN
+F 1 "+3.3V" H 6000 2690 50  0000 C CNN
+F 2 "" H 6000 2550 60  0000 C CNN
+F 3 "" H 6000 2550 60  0000 C CNN
+	1    6000 2550
+	1    0    0    -1  
+$EndComp
+$Comp
+L Motor_Pololu_MicroGeared M1
+U 1 1 59A27E32
+P 4000 3000
+F 0 "M1" H 4000 2750 60  0000 C CNN
+F 1 "Motor_Pololu_MicroGeared" V 4550 3150 60  0000 C CNN
+F 2 "idlehands_footprints:motor_pololu_microgeared" H 4000 3000 60  0001 C CNN
+F 3 "" H 4000 3000 60  0001 C CNN
+	1    4000 3000
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	8900 4650 8650 4650
+Wire Wire Line
+	8900 4400 8900 4650
+Wire Wire Line
+	8650 5050 8900 5050
+Wire Wire Line
+	9100 4500 8900 4500
+Connection ~ 8900 4500
+Wire Wire Line
+	7350 4650 7100 4650
+Wire Wire Line
+	7350 4400 7350 4650
+Wire Wire Line
+	7100 4850 7650 4850
+Connection ~ 7550 4850
+Wire Wire Line
+	7550 4500 7350 4500
+Connection ~ 7350 4500
+Wire Wire Line
+	7950 5250 7950 5500
+Wire Wire Line
+	7550 4850 7550 4800
+Connection ~ 7950 5250
+Wire Wire Line
+	7100 5050 7350 5050
+Wire Wire Line
+	7350 5050 7350 5250
+Wire Wire Line
+	7350 5250 8900 5250
+Wire Wire Line
+	8900 5250 8900 5050
+Wire Wire Line
+	8650 4850 9200 4850
+Wire Wire Line
+	9100 4800 9100 4850
+Connection ~ 9100 4850
+Wire Wire Line
+	5050 3400 5050 3250
+Wire Wire Line
+	5050 3250 5250 3250
+Wire Wire Line
+	5000 3150 5250 3150
+Wire Wire Line
+	5000 3050 5250 3050
+Wire Wire Line
+	4350 2950 4600 2950
+Wire Wire Line
+	4600 2950 4600 2850
+Wire Wire Line
+	4600 2850 5250 2850
+Wire Wire Line
+	5250 2750 4350 2750
+Wire Wire Line
+	5250 2950 5050 2950
+Wire Wire Line
+	5050 2950 5050 2550
+Wire Wire Line
+	6000 2750 6000 2550
+Wire Wire Line
+	6000 2950 6000 3150
+Wire Wire Line
+	4500 2750 4500 2600
+Wire Wire Line
+	4500 2600 4000 2600
+Connection ~ 4500 2750
+Wire Wire Line
+	4500 2950 4500 3400
+Wire Wire Line
+	4500 3400 4000 3400
+Connection ~ 4500 2950
+$EndSCHEMATC
