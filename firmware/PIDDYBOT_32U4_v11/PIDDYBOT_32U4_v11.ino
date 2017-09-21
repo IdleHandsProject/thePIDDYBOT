@@ -20,6 +20,8 @@
 #include <MPU6050.h>
 #include <I2Cdev.h>
 
+#include <EEPROM.h>
+
 //#include <PinChangeInt.h>
 #include <Encoder.h>
 
@@ -45,8 +47,7 @@ static int BATT = A6;
 float correction = -10;
 int correctionEn = 1;
 int returnto = 0;
-//float angleAdjust;
-//int prevforward = 0;
+
 int moveDir = 1;
 
 #define RESTRICT_PITCH
@@ -91,6 +92,8 @@ float gyroOffset = 0; // set in calibrateGyro()
 const int AvgAngles = 3;
 float prevTargetAngle = 0;
 float targetAngle = -90;
+uint8_t saveAngle = 0;
+int tAngle = 0;
 
 
 float angles[5];
@@ -134,12 +137,12 @@ unsigned long previousBTTime = 0;
 
 const long BTinterval = 1000;
 ////////////NEW ENCODER////////////////
-#define A_ENC 12
-#define B_ENC
-Encoder myEncA(14, 12);
+//#define A_ENC 12
+//#define B_ENC
+//Encoder myEncA(14, 12);
 Encoder myEncB(8, 6);
 void pin3func() {
-  returnto = myEncA.read();
+  //  returnto = myEncA.read();
 
   returnto = constrain(returnto, -5000, 5000);
 
@@ -173,9 +176,11 @@ void setup() {
 
   KalmanInit();
 
-  myEncA.write(0);
+  //  myEncA.write(0);
   myEncB.write(0);
   checkBatt();
+  saveAngle = EEPROM.read(1);
+  tAngle = saveAngle * -1;
 }
 
 
@@ -184,8 +189,9 @@ void loop() {
 
   //testMotors();
   checkBatt();
-  checkSerial();
   checkPots();
+
+
 #ifdef EPID_TUNE
   PIDtune();
 #else
@@ -194,12 +200,12 @@ void loop() {
 #endif
 
   updateLocation();
-  //targetAngle = -87 - correction;// + (correction * correctionEn * 1);
+  targetAngle = tAngle + correction;// + (correction * correctionEn * 1);
   //Serial.println(targetAngle);
   updateAngle();
-  Serial.print(targetAngle);
-  Serial.print("\t");
-  Serial.println(currAngle);
+  //Serial.print(targetAngle);
+  //Serial.print("\t");
+  //Serial.println(currAngle);
 
 
 
@@ -339,7 +345,7 @@ void updateAngle() {
 
 //PID Loop for Motor Speed control based on angle
 void updateSpeed() {
-  
+
 
   float K = 1;
   currError = targetAngle - currAngle;
@@ -386,7 +392,7 @@ void updateSpeed() {
     stop();
     motorSpeed = 0;
     fallflag = 1;
-    myEncA.write(0);
+    //    myEncA.write(0);
     myEncB.write(0);
   }
   else {
@@ -467,26 +473,26 @@ void stop() {
 void updateLocation() {
   //returnto = newPosition / 10;
   long AE, BE = 0;
-  AE = myEncA.read();
+  //  AE = myEncA.read();
   BE = myEncB.read();
 
   BE = BE * -1;
   if (BE > 400) {
     myEncB.write(-400);
   }
-  if (AE > 400) {
-    myEncA.write(400);
-  }
+  //  if (AE > 400) {
+  //    myEncA.write(400);
+  //  }
   if (BE < -400) {
     myEncB.write(400);
   }
-  if (AE < -400) {
-    myEncA.write(-400);
-  }
+  //  if (AE < -400) {
+  //    myEncA.write(-400);
+  //  }
   //Serial.print(AE);
   //Serial.print(", ");
   //Serial.println(BE);
-  offsetLoc = (AE + BE) / 2;
+  offsetLoc = BE;
   //offsetLoc = (returnto + Movement) / 10 ;
   pT = Lp * offsetLoc;
   //errorS += offsetLoc;
@@ -502,7 +508,10 @@ void updateLocation() {
 
 char dataIn = 'S';
 int repeat = 1;
-void checkSerial(){
+
+
+/*///BLUETOOTH USE - NOT NEEDED
+  void checkSerial(){
   char determinant;
 
   char lastData;
@@ -631,7 +640,9 @@ void checkSerial(){
 
 
 
-}
+  }
+*/
+
 ///Check the battery voltage, and stop system running if low.
 void checkBatt() {
   int voltage = 0;
@@ -640,7 +651,7 @@ void checkBatt() {
 
 
   //Serial.println(voltage);
-  if (voltage < 150) {
+  if (voltage < 200) {
     Serial.println("Recharge Battery");
     while (1) {
       digitalWrite(17, HIGH);
@@ -656,19 +667,31 @@ void checkBatt() {
 void checkPots() {
   int P1, P2, P3 = 0;
   int pT = 50;
+  int zeroed = 0;
   P1 = analogRead(pot1);
   P2 = analogRead(pot2);
   P3 = analogRead(pot3);
   while ((P1 < pT) && (P2 < pT) && (P3 < pT)) {
     updateAngle();
-    targetAngle = currAngle;
+    tAngle = currAngle;
     P1 = analogRead(pot1);
     P2 = analogRead(pot2);
     P3 = analogRead(pot3);
+    zeroed = 1;
   }
-}
+  saveAngle = tAngle * -1;
+  if (zeroed == 1) {
+    uint8_t tempAngle = EEPROM.read(1);
+    if (tempAngle != saveAngle) {
+      EEPROM.write(1, saveAngle);
+      Serial.println("Saving to EEPROM");
+    }
+    zeroed = 0;
+  }
 
-void PIDtune(){
+}
+/*
+  void PIDtune(){
 
 
   if (Serial1.available() > 0) {   //Check for data on the serial lines.
@@ -708,38 +731,38 @@ void PIDtune(){
       Serial1.println(Ld);
     }
   }
-}
-
+  }
+*/
 ////Test Motor RPM in relation to PWM.
 void testMotors() {
   {
-   //while (!Serial);
+    //while (!Serial);
     int rpm, changeA, changeB = 0;
 
 
     //Serial.println(x);
-    myEncA.write(0);
+    //    myEncA.write(0);
     myEncB.write(0);
-    while(1){
-    move(1, 50, 1, 1);
-    move(2, 50, 1, 1);
-    delay(1000);
-    move(1, 50, 0, 1);
-    move(2, 50, 0, 1);
-    delay(1000);
-    move(1, 150, 1, 1);
-    move(2, 150, 1, 1);
-    delay(1000);
-    move(1, 150, 0, 1);
-    move(2, 150, 0, 1);
-    delay(1000);
-    
-    move(1, 0, 0, 1);
-    move(2, 0, 0, 1);
-    delay(1000);
+    while (1) {
+      move(1, 50, 1, 1);
+      move(2, 50, 1, 1);
+      delay(1000);
+      move(1, 50, 0, 1);
+      move(2, 50, 0, 1);
+      delay(1000);
+      move(1, 150, 1, 1);
+      move(2, 150, 1, 1);
+      delay(1000);
+      move(1, 150, 0, 1);
+      move(2, 150, 0, 1);
+      delay(1000);
+
+      move(1, 0, 0, 1);
+      move(2, 0, 0, 1);
+      delay(1000);
     }
     while (1) {
-      changeA = myEncA.read();
+      //      changeA = myEncA.read();
       changeB = myEncB.read();
       Serial.print(changeA);
       Serial.print(", ");
