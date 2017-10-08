@@ -1,9 +1,8 @@
 //USE WITH THE SINGLE BOARD PIDDYBOT(Complete PCB)
-// Latest Version of PIDDYBOT Self Balancing Program 02/12/15
+// Latest Version of PIDDYBOT Self Balancing Program 08/10/17
 // Program created by Sean Hodgins.
 // Http://Idlehandsproject.com
 // This is free to be shared, altered, and used.
-// Find the Second target angle and tune for your bot, it may be different.
 // LIBRARIES
 //For use with board Version 1.1 - ATMEGA32U4 with DRV8835 Motor Driver
 
@@ -22,7 +21,6 @@
 
 #include <EEPROM.h>
 
-//#include <PinChangeInt.h>
 #include <Encoder.h>
 
 int A = 1;
